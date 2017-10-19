@@ -2,7 +2,7 @@
 #AutoIt3Wrapper_Icon=ActiveDirectory.ico
 #AutoIt3Wrapper_Compression=4
 #AutoIt3Wrapper_Res_Description=Performs simple AD queries
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.8
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.9
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_requestedExecutionLevel=asInvoker
 #AutoIt3Wrapper_Run_Tidy=y
@@ -100,7 +100,7 @@ Else
 	$titel &= " [32 Bit]"
 EndIf
 
-If @Compiled And _Singleton("userinfo", 1) = 0 Then ; Only start one instance of the application
+If @Compiled And _Singleton("Userinfo", 1) = 0 Then ; Only start one instance of the application
 	WinActivate($titel)
 	Exit
 EndIf
@@ -153,7 +153,7 @@ GUICtrlSetTip(-1, "Do another search")
 $top += 60
 $btnCountDeptUsers = GUICtrlCreateButton("Count Users of Department", $buttonLeft, $top, $buttonWidth, $buttonNormalHeight)
 GUICtrlSetResizing(-1, $GUI_DOCKRIGHT + $GUI_DOCKTOP + $GUI_DOCKWIDTH)
-GUICtrlSetTip(-1, "Investigating use...EC")
+GUICtrlSetTip(-1, "Count the number of users with the same department")
 
 $top += $buttonNormalHeight
 $btnDepartmentUsers = GUICtrlCreateButton("Show Users of Department", $buttonLeft, $top, $buttonWidth, $buttonNormalHeight)
@@ -168,7 +168,7 @@ GUICtrlSetTip(-1, "Compare group membership with other userId")
 $top += $buttonNormalHeight
 $btnCopyGroups = GUICtrlCreateButton("Copy Group List", $buttonLeft, $top, $buttonWidth, $buttonNormalHeight)
 GUICtrlSetResizing(-1, $GUI_DOCKRIGHT + $GUI_DOCKTOP + $GUI_DOCKWIDTH)
-GUICtrlSetTip(-1, "Copy the list of group to clipboard") ; should be copy clipboard icon next to listviewbutton
+GUICtrlSetTip(-1, "Copy the list of groups to clipboard") ; TODO: should be copy clipboard icon next to listviewbutton
 
 $top += $buttonNormalHeight
 $btnGroupMembers = GUICtrlCreateButton("Group members", $buttonLeft, $top, $buttonWidth, $buttonNormalHeight)
@@ -246,7 +246,7 @@ GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
 GUICtrlCreateLabel("Locked/Deact:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblLocked = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
+$lblAccountLocked = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("/", $cellPadding + $col1ValueLeft + $valueWidthShort, $top, 10, $labelHeight, $SS_CENTER)
@@ -325,7 +325,7 @@ $sbSearchAD = _GUICtrlStatusBar_Create($frmSearchAD)
 #EndRegion ; User Interface
 
 Global $oMyError = ""
-$oMyError = ObjEvent("AutoIt.Error", "_ADDoError") ; Install a custom error handler
+$oMyError = ObjEvent("AutoIt.Error", "_ADDoError") ; Create a custom error handler
 
 Dim $groups
 Global $lw_m = ""
@@ -382,18 +382,21 @@ Func _ADDoError()
 EndFunc   ;==>_ADDoError
 
 Func _ADGetAccount($user)
+
+	; Password last update is set
 	GUICtrlSetData($lblLastUpdate, Zeit($oUsr.PasswordLastChanged))
+
+	; Account locked is set
 	If $oUsr.IsAccountLocked Then
-		GUICtrlSetData($lblLocked, "Yes")
-		GUICtrlSetColor($lblLocked, $color_red)
+		GUICtrlSetData($lblAccountLocked, "Yes")
+		GUICtrlSetColor(-1, $color_red)
 	Else
-		GUICtrlSetData($lblLocked, "No")
-		GUICtrlSetColor($lblLocked, $color_green) ;$color_green
+		GUICtrlSetData($lblAccountLocked, "No")
+		GUICtrlSetColor(-1, $color_green)
 	EndIf
 
+	; Bad login count is set
 	GUICtrlSetData($lblBadLoginCount, $oUsr.BadLoginCount)
-
-	$intUAC = $oUsr.Get("userAccountControl")
 
 	; Check if the user is allowed to change his password. Because no direct query is possible, this is done via the Security Descriptor
 	$oSecDesc = $oUsr.Get("ntSecurityDescriptor")
@@ -410,16 +413,21 @@ Func _ADGetAccount($user)
 		EndIf
 	Next
 
-	If BitAND(0x00020, $intUAC) Then ; PW not required flag is set
+	; PW Required flag is set
+
+	$intUAC = $oUsr.Get("userAccountControl")
+
+	If BitAND(0x00020, $intUAC) Then
 		GUICtrlSetData($lblPwRequired, "No")
-	Else ; not set -> need PW
+	Else
 		GUICtrlSetData($lblPwRequired, "Yes")
 	EndIf
 
 	GUICtrlSetData($lblCreatedDate, Zeit($oUsr.whenCreated))
 	GUICtrlSetData($lblLogonScript, $oUsr.scriptPath)
 
-	If BitAND($intUAC, $ADS_UF_ACCOUNTDISABLE) Then ; Disabled flag is set
+	; Account disabled flag is set
+	If BitAND($intUAC, $ADS_UF_ACCOUNTDISABLE) Then
 		GUICtrlSetData($lblDeactivated, "Yes")
 		GUICtrlSetColor($lblDeactivated, $color_red)
 	Else
@@ -427,7 +435,7 @@ Func _ADGetAccount($user)
 		GUICtrlSetColor($lblDeactivated, $color_green)
 	EndIf
 
-
+	; Valid till is set
 	GUICtrlSetColor($lblExpiration, 0x000000)
 	$dummy = $oUsr.AccountExpirationDate
 	$tmp = Zeit2($dummy) ; Converted time for DateDiff
@@ -437,7 +445,7 @@ Func _ADGetAccount($user)
 	If ($tmp2 < 1) And ($tmp2 > -148883) Then GUICtrlSetColor($lblExpiration, $color_red) ; Password is expired
 
 	If ($dummy = "01.01.1601 02:00") Or ($dummy = "01.01.1970 00:00") Or ($dummy = "01.01.1601 01:00") Then
-		$dummy = "forever"
+		$dummy = " forever"
 		GUICtrlSetColor($lblExpiration, 0x000000)
 	EndIf
 	GUICtrlSetData($lblExpiration, $dummy)
@@ -881,7 +889,7 @@ Func copyToClipboard($clickValue)
 		$clickValue = StringReplace($clickValue, "|", @CRLF)
 		$clickValue = StringReplace($clickValue, @CRLF & @CRLF, "")
 		ClipPut($clickValue) ; copy to clipboard
-		_GUICtrlStatusBar_SetText($sbMain, "[" & $clickValue & "] has been copied to the clipboard") ; update status bar
+		_GUICtrlStatusBar_SetText($sbMain, "[ " & $clickValue & "] has been copied to the clipboard")
 		$x = ControlGetFocus($titel) ; find out what was clicked
 		If Not StringInStr($x, "SysListView32") Then ; If not something was clicked in the group list
 			GUICtrlSetBkColor($nMsg, $color_red) ; color the entry red
@@ -892,7 +900,6 @@ Func copyToClipboard($clickValue)
 EndFunc   ;==>copyToClipboard
 
 Func countDepartmentUsers($department)
-;~ 	$strQuery = "<LDAP://" & $strHostServer & "/" & $strDNSDomain & ">;(&(objectCategory=person)(objectclass=user)(department=" & $department & "*));ADsPath;subtree"
 	$strQuery = "<LDAP://" & $strHostServer & "/" & $strDNSDomain & ">;(&(objectCategory=person)(objectclass=user)(department=" & $department & "));ADsPath;subtree"
 	$objRecordSet = $objConnection.Execute($strQuery) ; Retrieve the FQDN if it exists
 	Return $objRecordSet.RecordCount
@@ -946,7 +953,7 @@ Func GUILoop() ; frmMain GUILoop
 				copyGroups()
 			Case $btnGroupMembers
 				$x = GUICtrlRead($listGroups)
-				If $x <> "" Then ; nur wenn auch ein User gewählt wurde...
+				If $x <> "" Then
 					$y = GUICtrlRead($x) ; Read ListviewItem
 					$tmp = StringSplit($y, "|") ; strip everything but groupname
 					_ADGetGroupMembers($tmp[2])
@@ -991,21 +998,6 @@ Func listDomains() ; discover all Domains in forest and select ours
 	GUICtrlSetData($cmbDomain, $y, "US")
 EndFunc   ;==>listDomains
 
-Func passwort_req($user)
-	$oUsr.Put("userAccountControl", BitXOR($intUAC, 0x00020))
-	$oUsr.SetInfo
-
-	$oUsr.GetInfo
-	$intUAC = $oUsr.Get("userAccountControl")
-	If BitAND(0x00020, $intUAC) Then ; PW not required flag is set
-		GUICtrlSetData($lblPwRequired, "No")
-		GUICtrlSetColor($lblPwRequired, $color_red)
-	Else ; not set -> Password required
-		GUICtrlSetData($lblPwRequired, "Yes")
-		GUICtrlSetColor($lblPwRequired, $color_green)
-	EndIf
-EndFunc   ;==>passwort_req
-
 Func queryAD()
 	$pc = ""
 	$lastlogon = "-"
@@ -1020,7 +1012,7 @@ Func queryAD()
 
 	Local $tmp = $oUsr.scriptpath
 
-	If $lastlogon = "-" Then ; Domänen LastLogin auswerten
+	If $lastlogon = "-" Then
 		$tmp = $oUsr.LastLogin
 		If $tmp <> "" Then
 			$lastlogon = Zeit($oUsr.LastLogin)
@@ -1054,18 +1046,16 @@ Func searchDepartmentUsers()
 
 	$frmColleagues = GUICreate("Colleagues", $frmWidth, $frmHeight)
 	GUISetIcon("shell32.dll", -171)
-	$userList = GUICtrlCreateListView("Username|UserID|Telephone|Office", $spacer, $spacer, $btnWidth, $lvHeight, $LVS_SORTASCENDING + $LVS_SINGLESEL + $LVS_SHOWSELALWAYS)
-	_GUICtrlListView_SetColumnWidth($userList, 0, 140)
+	$userList = GUICtrlCreateListView("Username|UserID|Telephone|Office|Department", $spacer, $spacer, $btnWidth, $lvHeight, $LVS_SORTASCENDING + $LVS_SINGLESEL + $LVS_SHOWSELALWAYS)
+	_GUICtrlListView_SetColumnWidth($userList, 0, 150)
 	_GUICtrlListView_SetColumnWidth($userList, 1, $LVSCW_AUTOSIZE)
 	$btnColleagueCompare = GUICtrlCreateButton("Compare groups with this colleague", $spacer, ($frmHeight - $spacer) - (3 * $btnHeight), $btnWidth, $btnHeight)
 	$btnColleagueSwitch = GUICtrlCreateButton("Switch to this colleague", $spacer, ($frmHeight - $spacer) - (2 * $btnHeight), $btnWidth, $btnHeight)
 	$btnColleagueOk = GUICtrlCreateButton("Ok", $spacer, ($frmHeight - $spacer) - (1 * $btnHeight), $btnWidth, $btnHeight)
 
-
 	; looking for colleagues from same department
 	Dim $arrayFound[1]
-;~ 	$z = ""
-	$strQuery = "<LDAP://" & $strHostServer & "/" & $strDNSDomain & ">;(&(objectCategory=person)(objectclass=user)(department=" & $department & "*));ADsPath;subtree"
+	$strQuery = "<LDAP://" & $strHostServer & "/" & $strDNSDomain & ">;(&(objectCategory=person)(objectclass=user)(department=" & $department & "));ADsPath;subtree"
 	$objRecordSet = $objConnection.Execute($strQuery) ; Retrieve the FQDN if it exists
 
 	;Fill listView with users where ou<>Recipients
@@ -1073,11 +1063,10 @@ Func searchDepartmentUsers()
 		$y = $objRecordSet.Fields(0).Value ; FQDN-Name Users
 		If Not StringInStr($y, "ou=Recipients") Then
 			$o_temp_Usr = ObjGet($objRecordSet.Fields(0).Value) ; Retrieve the COM Object for all users in search
-			$x = GUICtrlCreateListViewItem($o_temp_Usr.sn & "," & $o_temp_Usr.givenName & "|" & $o_temp_Usr.samAccountName & "|" & $o_temp_Usr.telephoneNumber & "|" & $o_temp_Usr.physicalDeliveryOfficeName, $userList)
+			$x = GUICtrlCreateListViewItem($o_temp_Usr.sn & "," & $o_temp_Usr.givenName & "|" & $o_temp_Usr.samAccountName & "|" & $o_temp_Usr.telephoneNumber & "|" & $o_temp_Usr.physicalDeliveryOfficeName & "|" & $department, $userList)
 		EndIf
 		$objRecordSet.MoveNext
 	Until $objRecordSet.EOF
-
 
 	GUISetState(@SW_SHOW, $frmColleagues)
 
