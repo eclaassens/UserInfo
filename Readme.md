@@ -1,4 +1,4 @@
-#UserInfo - AD information
+# UserInfo - AD information
 
 ## What does this tool?
 A small tool I copied from the AutoIt forum and adjusted for my own environment. Thanks to [Marc](https://www.autoitscript.com/forum/topic/153072-active-directory-tool-userinfo/) for code!
