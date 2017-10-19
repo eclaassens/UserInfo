@@ -1,0 +1,7 @@
+# Temp backups
+*.org
+*.old
+*.tmp
+
+# compile file
+userinfo_stripped.au3
