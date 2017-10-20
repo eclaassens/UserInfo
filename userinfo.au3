@@ -1,4 +1,4 @@
-#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#Region -**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=ActiveDirectory.ico
 #AutoIt3Wrapper_Compression=4
 #AutoIt3Wrapper_Res_Description=Performs simple AD queries
@@ -9,7 +9,7 @@
 #Tidy_Parameters=/sf
 #AutoIt3Wrapper_Run_Au3Stripper=y
 #Au3Stripper_Parameters=/sf
-#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
+#EndRegion -**** Directives created by AutoIt3Wrapper_GUI ****
 ;#AutoIt3Wrapper_run_obfuscator=y
 ;#Obfuscator_parameters=/striponly /om
 
@@ -31,13 +31,11 @@ EndIf
 #include <Array.au3>
 #include <Date.au3>
 #include <ColorConstants.au3>
-#include <IE.au3>
 #include <File.au3>
 #include <Math.au3> ; importing the max command
 #include <Misc.au3> ; importing _singleton
 #include <INet.au3>
 #include <String.au3>
-#include <localization.au3> ; load translations
 
 Opt("GUICloseOnESC", 0)
 Opt("GUIResizeMode", $GUI_DOCKAUTO)
@@ -45,7 +43,7 @@ Opt("WinTitleMatchMode", 2)
 Opt("TrayIconDebug", 0)
 Opt("TrayIconHide", 1)
 
-#Region ; Define AD Constants
+#Region - Define AD Constants
 Global Const $ADS_GROUP_TYPE_GLOBAL_GROUP = 0x2
 Global Const $ADS_GROUP_TYPE_DOMAIN_LOCAL_GROUP = 0x4
 Global Const $ADS_GROUP_TYPE_UNIVERSAL_GROUP = 0x8
@@ -78,7 +76,7 @@ Global Const $USER_ACCOUNT_RESTRICTIONS = "{4C164200-20C0-11D0-A768-00AA006E0529
 Global Const $VALIDATED_DNS_HOST_NAME = "{72E39547-7B18-11D1-ADEF-00C04FD8D5CD}"
 Global Const $VALIDATED_SPN = "{F3A64788-5306-11D1-A9C5-0000F80367C1}"
 Const $Member_SchemaIDGuid = "{BF9679C0-0DE6-11D0-A285-00AA003049E2}"
-#EndRegion ; Define AD Constants
+#EndRegion - Define AD Constants
 
 Global $objConnection = ObjCreate("ADODB.Connection") ; Create COM object to AD
 If @error Then
@@ -90,7 +88,7 @@ $objConnection.Open("Active Directory Provider") ; Open connection to AD
 
 Global $ADSystemInfo = ObjCreate("ADSystemInfo")
 
-#Region ; User Interface
+#Region - User Interface
 Global $nMsg
 
 $titel = "Userinfo " & FileGetVersion(@AutoItExe)
@@ -132,7 +130,7 @@ $frmMain = GUICreate($titel, $guiWidth, $guiHeight, -1, -1, $WS_SIZEBOX + $WS_SY
 GUISetIcon("shell32.dll", -171)
 GUICtrlSetFont($frmMain, 6)
 
-#Region ; Create all buttons
+#Region - Create all buttons
 
 GUICtrlCreateGroup("Functions", $guiWidth - ($buttonWidth + (3 * $buttonPadding)), $buttonPadding, $buttonWidth + (2 * $buttonPadding), $guiHeight) ;Create Functions group
 GUICtrlSetResizing(-1, $GUI_DOCKRIGHT + $GUI_DOCKTOP + $GUI_DOCKBOTTOM + $GUI_DOCKWIDTH)
@@ -181,9 +179,9 @@ GUICtrlSetResizing(-1, $GUI_DOCKRIGHT + $GUI_DOCKTOP + $GUI_DOCKWIDTH)
 GUICtrlSetTip(-1, "Guess...try and find out!")
 
 GUICtrlCreateGroup("", -99, -99, 1, 1) ;close group
-#EndRegion ; Create all buttons
+#EndRegion - Create all buttons
 
-#Region ; Create all info lables
+#Region - Create all info lables
 $top = 10
 GUICtrlCreateLabel("Name:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
 $lblName = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
@@ -283,19 +281,19 @@ GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Profile Path:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
 $lblProfilePath = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
-#EndRegion ; Create all info lables
+#EndRegion - Create all info lables
 
-#Region ; Create Listview
+#Region - Create Listview
 $top += 25
 $listGroups = GUICtrlCreateListView("Groupname|samAccountName|Group type|Member of|Scope", $col1LabelLeft, $top, 2 * $labelWidth + 2 * $valueWidthLong + 3 * $cellPadding, 400)
 _GUICtrlListView_SetColumnWidth($listGroups, 0, 240)
 _GUICtrlListView_SetColumnWidth($listGroups, 1, 225)
-#EndRegion ; Create Listview
+#EndRegion - Create Listview
 
-#Region ; Create statusbar
+#Region - Create statusbar
 $sbMain = _GUICtrlStatusBar_Create($frmMain)
 GUICtrlSetResizing(-1, $GUI_DOCKSTATEBAR)
-#EndRegion ; Create statusbar
+#EndRegion - Create statusbar
 
 #EndRegion - Create main window
 
@@ -322,7 +320,7 @@ $btnCancel = GUICtrlCreateButton("E&xit", 240, 90, 120, 25)
 $sbSearchAD = _GUICtrlStatusBar_Create($frmSearchAD)
 #EndRegion - Create Search AD frame
 
-#EndRegion ; User Interface
+#EndRegion - User Interface
 
 Global $oMyError = ""
 $oMyError = ObjEvent("AutoIt.Error", "_ADDoError") ; Create a custom error handler
@@ -344,12 +342,12 @@ Global $cancel ; Abort domain search
 Global $loopflag ; dient zur Kontrolle der Schleife bei der Userauswahl
 Global $MaxPasswordAge ; wie lang ein PW in der Domäne gültig ist
 
-#Region ; Main program
+#Region - Main program
 listDomains()
 setUser()
-#EndRegion ; Main program
+#EndRegion - Main program
 
-#Region ; Functions
+#Region - Functions
 Func _ADDoError()
 	$HexNumber = Hex($oMyError.number, 8)
 	If $HexNumber = 80020009 Then
@@ -755,7 +753,7 @@ Func compareUsers($compareUser = "")
 	Dim $groupCompare
 
 	If $compareUser = "" Then
-		$compareUser = InputBox($texts[$language][92], $texts[$language][93], "", "", 300, 120)
+		$compareUser = InputBox("Compare with", "Which UserID shall the user be compared with?", "", "", 300, 120)
 		If @error Then Return
 	EndIf
 
@@ -1184,4 +1182,4 @@ Func Zeit4($zeit) ; umwandeln von MM/DD/YYYY ins deutsche Format z.B.: 9/5/2008 
 	$tmp2 = $tmp[2] & "." & $tmp[1] & "." & $tmp3 & " " & StringLeft($tmp4, 5) ; Datum zusammensetzen
 	Return $tmp2
 EndFunc   ;==>Zeit4
-#EndRegion ; Functions
+#EndRegion - Functions

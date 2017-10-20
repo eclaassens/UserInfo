@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <object type="TAForm" name="frmMain">
 	<properties>
-		<property name="Left" vt="Int16">286</property>
-		<property name="Top" vt="Int16">-869</property>
+		<property name="Left" vt="Int8">28</property>
+		<property name="Top" vt="Int16">-891</property>
 		<property name="Width" vt="Int16">1016</property>
-		<property name="Height" vt="Int16">755</property>
+		<property name="Height" vt="Int16">738</property>
 		<property name="Caption" vt="String">Userinfo</property>
 		<property name="Color" vt="Ident">clBtnFace</property>
 		<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
@@ -5229,9 +5229,9 @@
 			<properties>
 				<property name="Left" vt="Int8">10</property>
 				<property name="Top" vt="Int8">10</property>
-				<property name="Width" vt="Int8">42</property>
+				<property name="Width" vt="Int8">32</property>
 				<property name="Height" vt="Int8">17</property>
-				<property name="Caption" vt="String">lblName</property>
+				<property name="Caption" vt="String">Name</property>
 				<property name="TabOrder" vt="Int8">0</property>
 				<property name="HaveVariable" vt="False">False</property>
 				<property name="CtrlStyle" vt="Int32">1342308608</property>
@@ -5250,7 +5250,7 @@
 				<property name="CtrlExStyle" vt="Int8">0</property>
 				<property name="Caption" vt="String">Functions</property>
 				<property name="TabOrder" vt="Int8">1</property>
-				<property name="Resizing" vt="Set">DockRight, DockTop, DockBottom</property>
+				<property name="Resizing" vt="Set">DockRight, DockTop, DockBottom, DockWidth</property>
 			</properties>
 			<components>
 				<object type="TAButton" name="btnSearch">
@@ -5265,26 +5265,12 @@
 						<property name="Color" vt="Ident">clBtnFace</property>
 						<property name="CtrlStyle" vt="Int32">1342373888</property>
 						<property name="CtrlExStyle" vt="Int8">0</property>
-						<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+						<property name="Resizing" vt="Set">DockAuto</property>
 						<property name="HotKey" vt="Int8">116</property>
 					</properties>
 					<components/>
 				</object>
 			</components>
-		</object>
-		<object type="TAInput" name="Input1">
-			<properties>
-				<property name="Left" vt="Int8">80</property>
-				<property name="Top" vt="Int8">10</property>
-				<property name="Width" vt="Int8">121</property>
-				<property name="Height" vt="Int8">21</property>
-				<property name="TabOrder" vt="Int8">2</property>
-				<property name="Text" vt="String">inpName</property>
-				<property name="CtrlStyle" vt="Int32">1342374016</property>
-				<property name="CtrlExStyle" vt="Int16">512</property>
-				<property name="Resizing" vt="Set">DockAuto, DockLeft, DockHeight</property>
-			</properties>
-			<components/>
 		</object>
 		<object type="TAListView" name="lvMain">
 			<properties>
@@ -5312,7 +5298,7 @@
 		<object type="TAStatusBar" name="stbMain">
 			<properties>
 				<property name="Left" vt="Int8">0</property>
-				<property name="Top" vt="Int16">698</property>
+				<property name="Top" vt="Int16">681</property>
 				<property name="Width" vt="Int16">1000</property>
 				<property name="Height" vt="Int8">19</property>
 				<property name="Panels" vt="Collection">
@@ -5321,6 +5307,21 @@
 				<property name="SimplePanel" vt="True">True</property>
 				<property name="CtrlStyle" vt="Int32">1342177536</property>
 				<property name="CtrlExStyle" vt="Int8">0</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TALabel" name="Label1">
+			<properties>
+				<property name="Left" vt="Int8">10</property>
+				<property name="Top" vt="Int8">40</property>
+				<property name="Width" vt="Int8">20</property>
+				<property name="Height" vt="Int8">17</property>
+				<property name="Caption" vt="String">OU</property>
+				<property name="TabOrder" vt="Int8">4</property>
+				<property name="HaveVariable" vt="False">False</property>
+				<property name="CtrlStyle" vt="Int32">1342308608</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set">DockAuto</property>
 			</properties>
 			<components/>
 		</object>
