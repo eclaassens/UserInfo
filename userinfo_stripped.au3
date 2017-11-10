@@ -1530,260 +1530,6 @@ EndIf
 EndIf
 Return $aHandle[0]
 EndFunc
-$language = 1
-dim $texts[2][200]
-$texts[0][0] = "Konnte ADODDB-Connection nicht erstellen"
-$texts[0][1] = "Funktionen"
-$texts[0][2] = "Neu Laden"
-$texts[0][3] = "Nachbarn"
-$texts[0][4] = "User wechseln"
-$texts[0][5] = " alles kopieren"
-$texts[0][6] = " alles drucken"
-$texts[0][7] = "NC mit VNC öffnen"
-$texts[0][8] = "Citrix-Profile säubern"
-$texts[0][9] = "Zähle User pro Abteilung"
-$texts[0][10] = "Zeige alle aus Dezernat"
-$texts[0][11] = "Gruppenvergleich"
-$texts[0][12] = "Gruppenliste kopieren"
-$texts[0][13] = "Gruppen-Info"
-$texts[0][14] = " c:\ des PCs"
-$texts[0][15] = "Ereignisanzeige"
-$texts[0][16] = "Remote Desktop"
-$texts[0][17] = "Versionscheck"
-$texts[0][18] = "PC-Softwareinfo"
-$texts[0][19] = " Beenden"
-$texts[0][20] = "Name des Users:"
-$texts[0][21] = "UserID:"
-$texts[0][22] = "Anrede:"
-$texts[0][23] = "F-Nummer:"
-$texts[0][24] = "Veröffentlicht auf"
-$texts[0][25] = "Tel.Nr.:"
-$texts[0][26] = "Abteilung:"
-$texts[0][27] = "Domain:"
-$texts[0][28] = "email:"
-$texts[0][29] = "Ort:"
-$texts[0][30] = "Adresse:"
-$texts[0][31] = "Raum:"
-$texts[0][32] = "Namen der PCs|IP-Adresse|Mac-Adresse|?|Namen der NCs|IP-Adresse|Mac-Adresse|?"
-$texts[0][33] = "Letzte Änderung:"
-$texts[0][34] = "Haltbar bis:"
-$texts[0][35] = "PW nötig:"
-$texts[0][36] = "PW ändern:"
-$texts[0][37] = "Gesperrt/Deaktiv:"
-$texts[0][38] = "Entsperren"
-$texts[0][39] = "Erzeugt am:"
-$texts[0][40] = "Fehlversuche:"
-$texts[0][41] = "letzter Login:"
-$texts[0][42] = "Home-Verzeichnis:"
-$texts[0][43] = "Home-Lw:"
-$texts[0][44] = "Loginscript:"
-$texts[0][45] = "Profilpfad:"
-$texts[0][46] = "Geboren am:"
-$texts[0][47] = "TS-Profil:"
-$texts[0][48] = "Postkorb:"
-$texts[0][49] = "AmtsBez.:"
-$texts[0][50] = "PWChange:"
-$texts[0][51] = "Geschlecht:"
-$texts[0][52] = "SAP PersNr:"
-$texts[0][53] = "Name der Gruppe|samAccountName|Art der Gruppe|Mitglied von|Gültigkeit"
-$texts[0][54] = "Nachname"
-$texts[0][55] = "Vorname"
-$texts[0][56] = "Abbrechen"
-$texts[0][57] = "Habe die neue Version installiert."
-$texts[0][58] = "Warte auf Eingabe"
-$texts[0][59] = "Lese die Userdaten aus..."
-$texts[0][60] = " wurde ins Clipboard kopiert"
-$texts[0][61] = "Die Domäne "
-$texts[0][62] = " kann nicht angesprochen werden."
-$texts[0][63] = "Der Account "
-$texts[0][64] = " existiert nicht in der Domäne."
-$texts[0][65] = "noch nie"
-$texts[0][66] = "Userdaten wurden ausgelesen (in "
-$texts[0][67] = " Sekunden, davon "
-$texts[0][68] = " fürs ADS), Domänencontroller: "
-$texts[0][69] = "Benutzer wählen"
-$texts[0][70] = "Name des Anwenders/der Anwenderin|UserID"
-$texts[0][71] = "Es wurden "
-$texts[0][72] = " User mit diesem Suchbegriff gefunden. Bitte den genauen User auswählen:"
-$texts[0][73] = "32Bit Programm unter 64 Bit OS -> nicht auslesbar!"
-$texts[0][74] = "Ja"
-$texts[0][75] = "Nein"
-$texts[0][76] = "erlaubt"
-$texts[0][77] = "gesperrt"
-$texts[0][78] = "für immer"
-$texts[0][79] = "Diese Gruppe ist eine Distributionsgruppe und wird von Userinfo (noch) nicht interpretiert"
-$texts[0][80] = "Gruppenname"
-$texts[0][81] = "angelegt"
-$texts[0][82] = "letzte Änderung"
-$texts[0][83] = "Mail"
-$texts[0][84] = "Gruppeninfo"
-$texts[0][85] = "Beschreibung"
-$texts[0][86] = "Bereich der Gruppe"
-$texts[0][87] = "Art der Gruppe"
-$texts[0][88] = "Anzahl Mitglieder"
-$texts[0][89] = "Mitglieder nach Namen"
-$texts[0][90] = "Mitglieder nach UserID"
-$texts[0][91] = "Gruppenmitglieder wurden ins Clipboard kopiert"
-$texts[0][92] = "Mit wem vergleichen"
-$texts[0][93] = "Mit welcher UserID soll verglichen werden?"
-$texts[0][94] = "Gruppen die nur "
-$texts[0][95] = " hat"
-$texts[0][96] = "Gemeinsame Gruppen"
-$texts[0][97] = "Vergleich der Benutzergruppen wurde ausgeführt"
-$texts[0][98] = "Account gesperrt"
-$texts[0][99] = "Account deaktiviert"
-$texts[0][100] = "Domänencontroller"
-$texts[0][101] = "Namen der PCs"
-$texts[0][102] = "Namen der NCs"
-$texts[0][103] = "Gruppen"
-$texts[0][104] = "Keine Verbindung zur PC-Datenbank möglich - entweder Server weg oder Account gesperrt!"
-$texts[0][105] = "Keine Verbindung zur NC-Datenbank möglich"
-$texts[0][106] = "Mehrere Geräte in Datenbank - Bitte wählen"
-$texts[0][107] = "Name des Rechners|IP-Adresse"
-$texts[0][108] = "Kein RealVNC gefunden"
-$texts[0][109] = "Der unter C:\Programme\RealVNC\VNC4\vncviewer.exe erwartete RealVNC Viewer ist nicht vorhanden"
-$texts[0][110] = "-> verschoben"
-$texts[0][111] = "-> nicht verschoben"
-$texts[0][112] = "Löschergebnis"
-$texts[0][113] = "Es wurden keine Verzeichnisse gefunden"
-$texts[0][114] = "Nachbarn anzeigen"
-$texts[0][115] = "Raum|Name des Anwenders/der Anwenderin|UserID|Telefon"
-$texts[0][116] = "Gruppenvergleich mit diesem Nachbarn"
-$texts[0][117] = "Wechsel der Info-Anzeige zu diesem Nachbarn"
-$texts[0][118] = "Offline"
-$texts[0][119] = "Der PC ist offline"
-$texts[0][120] = "Zugriffsproblem"
-$texts[0][121] = "Kein Zugriff möglich auf das Laufwerk C"
-$texts[0][122] = "Softwarestand des PCs "
-$texts[0][123] = "Software auf dem PC "
-$texts[0][124] = "Anzahl der Mitarbeiter pro Abteilung"
-$texts[0][125] = "Keine Verbindung zur X500 möglich"
-$texts[1][ 0] = "Could not create ADODB Connection"
-$texts[1][ 1] = "Functions"
-$texts[1][ 2] = "Refresh"
-$texts[1][ 3] = "Neighbours"
-$texts[1][ 4] = "New Search"
-$texts[1][ 5] = "Copy everything"
-$texts[1][ 6] = "Print everything"
-$texts[1][ 7] = "View NC with VNC"
-$texts[1][ 8] = "Clean Citrix Profiles"
-$texts[1][ 9] = "Count Users of Department"
-$texts[1][10] = "Show Users of Department"
-$texts[1][11] = "Compare Groups"
-$texts[1][12] = "Copy Group List"
-$texts[1][13] = "Group-Info"
-$texts[1][14] = "c:\ from PC"
-$texts[1][15] = "Eventlog"
-$texts[1][16] = "Remote Desktop"
-$texts[1][17] = "Check Versions"
-$texts[1][18] = "PC-Softwareinfo"
-$texts[1][19] = " Exit"
-$texts[1][20] = "Name of the User:"
-$texts[1][21] = "UserID:"
-$texts[1][22] = "Title:"
-$texts[1][23] = "F-Number:"
-$texts[1][24] = "Released on:"
-$texts[1][25] = "Phone:"
-$texts[1][26] = "Department:"
-$texts[1][27] = "Domain:"
-$texts[1][28] = "email:"
-$texts[1][29] = "Location:"
-$texts[1][30] = "Address:"
-$texts[1][31] = "Room:"
-$texts[1][32] = "Names of PCs|IP-Adress|Mac-Adress|?|Names of NCs|IP-Adress|Mac-Adress|?"
-$texts[1][33] = "Last changed:"
-$texts[1][34] = "Valid till:"
-$texts[1][35] = "PW req.:"
-$texts[1][36] = "PW change:"
-$texts[1][37] = "Locked/Deact:"
-$texts[1][38] = "Unlock"
-$texts[1][39] = "Created on:"
-$texts[1][40] = "Errorcount:"
-$texts[1][41] = "Last logon:"
-$texts[1][42] = "Homedirectory:"
-$texts[1][43] = "Homedrive:"
-$texts[1][44] = "Loginscript:"
-$texts[1][45] = "Profile Path:"
-$texts[1][46] = "Born on:"
-$texts[1][47] = "TS-Profile:"
-$texts[1][48] = "Jobstorage:"
-$texts[1][49] = "Rank:"
-$texts[1][50] = "PWChange:"
-$texts[1][51] = "Sex:"
-$texts[1][52] = "SAP No.:"
-$texts[1][53] = "Name of Group|samAccountName|Group type|Member of|Scope"
-$texts[1][54] = "Surname"
-$texts[1][55] = "Christian name"
-$texts[1][56] = "Cancel"
-$texts[1][57] = "New version is installed."
-$texts[1][58] = "Waiting for input"
-$texts[1][59] = "Reading user data..."
-$texts[1][60] = " has been copied to the clipboard"
-$texts[1][61] = "The domain "
-$texts[1][62] = " could not be reached."
-$texts[1][63] = "The account "
-$texts[1][64] = " does not exist in the domain."
-$texts[1][65] = "never ever"
-$texts[1][66] = "Userdata read (in "
-$texts[1][67] = " seconds, with "
-$texts[1][68] = " from ADS), Domaincontroller: "
-$texts[1][69] = "Choose User"
-$texts[1][70] = "Name or UserID to search"
-$texts[1][71] = "We've found "
-$texts[1][72] = " Users with this criteria. Please select the desired one:"
-$texts[1][73] = "32Bit Program under 64 Bit OS -> can't read value!"
-$texts[1][74] = "Yes"
-$texts[1][75] = "No"
-$texts[1][76] = "allowed"
-$texts[1][77] = "locked"
-$texts[1][78] = "forever"
-$texts[1][79] = "This is a distribution group and can not (yet) be interpreted"
-$texts[1][80] = "Groupname"
-$texts[1][81] = "created"
-$texts[1][82] = "last changed"
-$texts[1][83] = "mail"
-$texts[1][84] = "Group info"
-$texts[1][85] = "Description"
-$texts[1][86] = "Scope of the group"
-$texts[1][87] = "Group class"
-$texts[1][88] = "Member count"
-$texts[1][89] = "Groupmembers by Name"
-$texts[1][90] = "Groupmembers by UserID"
-$texts[1][91] = "Groupmembers have been copied to the clipboard"
-$texts[1][92] = "Compare with"
-$texts[1][93] = "Which UserID shall the user be compared with?"
-$texts[1][94] = "Groups which only "
-$texts[1][95] = " has"
-$texts[1][96] = "Common Groups"
-$texts[1][97] = "Comparison of groups completed"
-$texts[1][98] = "Account locked"
-$texts[1][99] = "Account deactivated"
-$texts[1][100] = "Domain controller"
-$texts[1][100] = "Names of PCs"
-$texts[1][101] = "Names of NCs"
-$texts[1][103] = "Gruppen"
-$texts[1][104] = "No connection to the PC Database"
-$texts[1][105] = "No connection to the NC Database"
-$texts[1][106] = "Multiple devices in database - please choose"
-$texts[1][107] = "Name of PC|IP-Adress"
-$texts[1][108] = "No RealVNC found"
-$texts[1][109] = "The expected file at C:\Programme\RealVNC\VNC4\vncviewer.exe"
-$texts[1][110] = "-> moved"
-$texts[1][111] = "-> not moved"
-$texts[1][112] = "Deletion result"
-$texts[1][113] = "No directories have been found"
-$texts[1][114] = "Show neighbours"
-$texts[1][115] = "Room|Name of the User|UserID|Telephone"
-$texts[1][116] = "Compare groups with this neighbour"
-$texts[1][117] = "Switch to this neighbour"
-$texts[1][118] = "Offline"
-$texts[1][119] = "The PC is offline"
-$texts[1][120] = "Access problem"
-$texts[1][121] = "Drive C:\ cannot be accessed"
-$texts[1][122] = "Softwarestatus of this PC "
-$texts[1][123] = "Software on this PC "
-$texts[1][124] = "Usercount per department "
-$texts[1][125] = "Could not connect to X500 Database"
 Opt("GUICloseOnESC", 0)
 Opt("GUIResizeMode", $GUI_DOCKAUTO)
 Opt("WinTitleMatchMode", 2)
@@ -1876,80 +1622,82 @@ GUICtrlSetTip(-1, "Guess...try and find out!")
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 $top = 10
 GUICtrlCreateLabel("Name:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblName = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblName = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("UserID:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblUserId = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblUserId = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 20
 GUICtrlCreateLabel("OU:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblOU = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblOU = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Telephone:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblTelephone = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblTelephone = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 20
 GUICtrlCreateLabel("Department:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblDepartment = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblDepartment = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Domain:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblDomain = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblDomain = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 20
 GUICtrlCreateLabel("Email:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblEmail = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblEmail = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Location:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblLocation = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblLocation = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 20
 GUICtrlCreateLabel("Address:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblAddress = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblAddress = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Office:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblOffice = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblOffice = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 20
 GUICtrlCreateLabel("Last update:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblLastUpdate = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblLastUpdate = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Valid till:", $col1ValueLeft + $valueWidthDate + $cellPadding, $top, $labelWidth / 2, $labelHeight)
-$lblExpiration = GUICtrlCreateLabel("", $col1ValueLeft + $valueWidthDate +($labelWidth / 2) + $cellPadding, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblExpiration = GUICtrlCreateLabel("  fetching...", $col1ValueLeft + $valueWidthDate +($labelWidth / 2) + $cellPadding, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("PW Required:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblPwRequired = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblPwRequired = GUICtrlCreateLabel("  fetching...", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Change:", $col2ValueLeft + $valueWidthDate + $cellPadding, $top, $labelWidth / 2, $labelHeight)
-$lblPWChange = GUICtrlCreateLabel("", $col2ValueLeft + $valueWidthDate +($labelWidth / 2) + $cellPadding, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblPWChange = GUICtrlCreateLabel("  fetching...", $col2ValueLeft + $valueWidthDate +($labelWidth / 2) + $cellPadding, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 20
 GUICtrlCreateLabel("Locked/Deact:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblAccountLocked = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
+$lblAccountLocked = GUICtrlCreateLabel("-", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("/", $cellPadding + $col1ValueLeft + $valueWidthShort, $top, 10, $labelHeight, $SS_CENTER)
 $lblDeactivated = GUICtrlCreateLabel("-", $col1ValueLeft + $valueWidthShort +(4 * $cellPadding), $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Created on:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblCreatedDate = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblCreatedDate = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 20
 GUICtrlCreateLabel("Failed count:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblBadLoginCount = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
+$lblBadLoginCount = GUICtrlCreateLabel("-", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Last logon:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblLastLogon = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblLastLogon = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 20
 GUICtrlCreateLabel("Homedirectory:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
 $lblHomeDirectory = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Homedrive:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblHomeDrive = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
+$lblHomeDrive = GUICtrlCreateLabel(" ...", $col2ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 20
 GUICtrlCreateLabel("Loginscript:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblLogonScript = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblLogonScript = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 GUICtrlCreateLabel("Profile Path:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblProfilePath = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblProfilePath = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 $top += 25
 $listGroups = GUICtrlCreateListView("Groupname|samAccountName|Group type|Member of|Scope", $col1LabelLeft, $top, 2 * $labelWidth + 2 * $valueWidthLong + 3 * $cellPadding, 400)
@@ -2138,7 +1886,7 @@ FileWriteLine($data, "</tbody>")
 FileWriteLine($data, "</table></body></html>")
 FileClose($data)
 ShellExecute(@TempDir & "\groupMembers.html")
-_GUICtrlStatusBar_SetText($sbMain, "Group membership created.")
+_GUICtrlStatusBar_SetText($sbMain, "Group membership overview created for [" & $group & "]")
 Return
 EndFunc
 Func _ADGetUserData($user)
@@ -2326,7 +2074,7 @@ Func compareUsers($compareUser = "")
 Local $strQuery2, $objRecordSet2, $ldap_entry2
 Dim $groupCompare
 If $compareUser = "" Then
-$compareUser = InputBox($texts[$language][92], $texts[$language][93], "", "", 300, 120)
+$compareUser = InputBox("Compare with", "Which UserID shall the user be compared with?", "", "", 300, 120)
 If @error Then Return
 EndIf
 SplashTextOn("", "Please wait while minions are rumbling through the AD", "-1", "-1", "-1", "-1", 33, "", "", "")
@@ -2436,7 +2184,7 @@ WEnd
 $clickValue = StringReplace($clickValue, "|", @CRLF)
 $clickValue = StringReplace($clickValue, @CRLF & @CRLF, "")
 ClipPut($clickValue)
-_GUICtrlStatusBar_SetText($sbMain, "[ " & $clickValue & "] has been copied to the clipboard")
+_GUICtrlStatusBar_SetText($sbMain, "String [ " & $clickValue & " ] has been copied to the clipboard")
 $x = ControlGetFocus($titel)
 If Not StringInStr($x, "SysListView32") Then
 GUICtrlSetBkColor($nMsg, $color_red)

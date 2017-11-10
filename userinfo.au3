@@ -2,7 +2,7 @@
 #AutoIt3Wrapper_Icon=ActiveDirectory.ico
 #AutoIt3Wrapper_Compression=4
 #AutoIt3Wrapper_Res_Description=Performs simple AD queries
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.9
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.10
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_requestedExecutionLevel=asInvoker
 #AutoIt3Wrapper_Run_Tidy=y
@@ -184,67 +184,69 @@ GUICtrlCreateGroup("", -99, -99, 1, 1) ;close group
 #Region - Create all info lables
 $top = 10
 GUICtrlCreateLabel("Name:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblName = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblName = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("UserID:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblUserId = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblUserId = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
 GUICtrlCreateLabel("OU:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblOU = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblOU = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Telephone:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblTelephone = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblTelephone = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
 GUICtrlCreateLabel("Department:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblDepartment = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblDepartment = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Domain:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblDomain = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblDomain = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
 GUICtrlCreateLabel("Email:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblEmail = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblEmail = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Location:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblLocation = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblLocation = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
 GUICtrlCreateLabel("Address:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblAddress = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblAddress = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Office:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblOffice = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblOffice = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
 GUICtrlCreateLabel("Last update:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblLastUpdate = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblLastUpdate = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Valid till:", $col1ValueLeft + $valueWidthDate + $cellPadding, $top, $labelWidth / 2, $labelHeight)
-$lblExpiration = GUICtrlCreateLabel("", $col1ValueLeft + $valueWidthDate + ($labelWidth / 2) + $cellPadding, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblExpiration = GUICtrlCreateLabel("  fetching...", $col1ValueLeft + $valueWidthDate + ($labelWidth / 2) + $cellPadding, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("PW Required:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblPwRequired = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblPwRequired = GUICtrlCreateLabel("  fetching...", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Change:", $col2ValueLeft + $valueWidthDate + $cellPadding, $top, $labelWidth / 2, $labelHeight)
-$lblPWChange = GUICtrlCreateLabel("", $col2ValueLeft + $valueWidthDate + ($labelWidth / 2) + $cellPadding, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblPWChange = GUICtrlCreateLabel("  fetching...", $col2ValueLeft + $valueWidthDate + ($labelWidth / 2) + $cellPadding, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
 GUICtrlCreateLabel("Locked/Deact:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblAccountLocked = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
+$lblAccountLocked = GUICtrlCreateLabel("-", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("/", $cellPadding + $col1ValueLeft + $valueWidthShort, $top, 10, $labelHeight, $SS_CENTER)
@@ -252,16 +254,16 @@ $lblDeactivated = GUICtrlCreateLabel("-", $col1ValueLeft + $valueWidthShort + (4
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Created on:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblCreatedDate = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblCreatedDate = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
 GUICtrlCreateLabel("Failed count:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblBadLoginCount = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
+$lblBadLoginCount = GUICtrlCreateLabel("-", $col1ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Last logon:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblLastLogon = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
+$lblLastLogon = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthDate, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
@@ -270,16 +272,16 @@ $lblHomeDirectory = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Homedrive:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblHomeDrive = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
+$lblHomeDrive = GUICtrlCreateLabel(" ...", $col2ValueLeft, $top, $valueWidthShort, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 $top += 20
 GUICtrlCreateLabel("Loginscript:", $col1LabelLeft, $top, $labelWidth, $labelHeight)
-$lblLogonScript = GUICtrlCreateLabel("", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblLogonScript = GUICtrlCreateLabel(" fetching...", $col1ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 
 GUICtrlCreateLabel("Profile Path:", $col2LabelLeft, $top, $labelWidth, $labelHeight)
-$lblProfilePath = GUICtrlCreateLabel("", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
+$lblProfilePath = GUICtrlCreateLabel(" fetching...", $col2ValueLeft, $top, $valueWidthLong, $valueHeight, $SS_SUNKEN)
 GUICtrlSetFont(-1, -1, 800)
 #EndRegion - Create all info lables
 
@@ -539,7 +541,7 @@ Func _ADGetGroupMembers($group)
 	FileClose($data)
 	ShellExecute(@TempDir & "\groupMembers.html")
 
-	_GUICtrlStatusBar_SetText($sbMain, "Group membership created.")
+	_GUICtrlStatusBar_SetText($sbMain, "Group membership overview created for [" & $group & "]")
 	Return
 EndFunc   ;==>_ADGetGroupMembers
 
@@ -887,7 +889,7 @@ Func copyToClipboard($clickValue)
 		$clickValue = StringReplace($clickValue, "|", @CRLF)
 		$clickValue = StringReplace($clickValue, @CRLF & @CRLF, "")
 		ClipPut($clickValue) ; copy to clipboard
-		_GUICtrlStatusBar_SetText($sbMain, "[ " & $clickValue & "] has been copied to the clipboard")
+		_GUICtrlStatusBar_SetText($sbMain, "String [ " & $clickValue & " ] has been copied to the clipboard")
 		$x = ControlGetFocus($titel) ; find out what was clicked
 		If Not StringInStr($x, "SysListView32") Then ; If not something was clicked in the group list
 			GUICtrlSetBkColor($nMsg, $color_red) ; color the entry red
